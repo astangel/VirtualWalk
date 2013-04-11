@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_name: MyString
+  start_date: 2013-04-10 20:55:33
+  end_date: 2013-04-10 20:55:33
+  goal: 1
+  details: MyText
+  logo: MyString
+  agency_id: 1
+  sponsor_id: MyString
+
+two:
+  event_name: MyString
+  start_date: 2013-04-10 20:55:33
+  end_date: 2013-04-10 20:55:33
+  goal: 1
+  details: MyText
+  logo: MyString
+  agency_id: 1
+  sponsor_id: MyString

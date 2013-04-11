@@ -1,4 +1,20 @@
 VirtualWalk::Application.routes.draw do
+  resources :users
+
+  resources :registrations
+
+  resources :events
+
+  resources :activities
+
+  resources :sponsors
+
+  resources :teams
+
+  resources :agencies
+
+  resources :roles
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
