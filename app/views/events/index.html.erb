@@ -1,37 +1,38 @@
-<h1>Listing events</h1>
+<%= link_to(new_event_path, :title => 'Create a New Event') do %><div class="newBtn"><i class="icon-new"></i>Add Event</div><% end %>
+<h1>Events</h1>
 
-<table>
+<table class="object-list">
   <tr>
+    <th>Logo</th>
     <th>Event name</th>
-    <th>Start date</th>
-    <th>End date</th>
+    <th>Charity</th>
+    <th>Dates</th>
     <th>Goal</th>
     <th>Details</th>
     <th>Logo</th>
-    <th>Agency</th>
     <th>Sponsor</th>
     <th></th>
-    <th></th>
-    <th></th>
+
   </tr>
 
 <% @events.each do |event| %>
   <tr>
+  	<td><center><%= image_tag(event.logo, :class => 'small-img') %></center></td>
     <td><%= event.event_name %></td>
-    <td><%= event.start_date %></td>
-    <td><%= event.end_date %></td>
-    <td><%= event.goal %></td>
-    <td><%= event.details %></td>
-    <td><%= event.logo %></td>
-    <td><%= event.agency_id %></td>
-    <td><%= event.sponsor_id %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= event.agency.name %></td>
+    <td><%= event.date_range %></td>
+    <td><%= number_to_currency(event.goal) %></td>
+    <td><%= truncate(event.details, :length => 40, :separator => ' ', :omission => '... (continued)') %></td>
+    <td><%= event.sponsor.name %></td>
+    <td>
+      <div class="iconHolder">
+      	<%= link_to(event, :title => 'View Event') do %><i class="icon-show"></i><% end %>
+        <%= link_to(edit_event_path(event), :title => 'Update Event') do %><i class="icon-update"></i><% end %>
+        <%= link_to(event, confirm: 'Are you sure?', method: :delete, :title => 'Delete Event') do %><i class="icon-delete"></i><% end %>
+      </div>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+<%#= link_to 'New Event', new_event_path %>

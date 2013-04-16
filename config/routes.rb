@@ -14,6 +14,8 @@ VirtualWalk::Application.routes.draw do
   resources :agencies
 
   resources :roles
+  
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

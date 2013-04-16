@@ -1,23 +1,26 @@
-<h1>Listing roles</h1>
+<%= link_to(new_role_path, :title => 'Create a New Role') do %><div class="newBtn"><i class="icon-new"></i>Add Role</div><% end %>
+<h1>Roles</h1>
 
-<table>
+<table class="object-list">
   <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @roles.each do |role| %>
   <tr>
     <td><%= role.name %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+      <div class="iconHolder">
+      	<%= link_to(role, :title => 'View Role') do %><i class="icon-show"></i><% end %>
+        <%= link_to(edit_role_path(role), :title => 'Update Role') do %><i class="icon-update"></i><% end %>
+        <%= link_to(role, confirm: 'Are you sure?', method: :delete, :title => 'Delete Role') do %><i class="icon-delete"></i><% end %>
+      </div>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Role', new_role_path %>
+<%#= link_to 'New Role', new_role_path %>

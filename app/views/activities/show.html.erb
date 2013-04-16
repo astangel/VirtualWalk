@@ -1,8 +1,17 @@
 <p id="notice"><%= notice %></p>
+<div class="page-title-holder">
+  <div class="page-title"><h1>Activity #<%= @activity.id %></h1></div>
+  <div style="float:left;">
+  	<div class="iconHolder">
+  		<%= link_to(edit_activity_path(@activity), :title => 'Update Activities') do %><i class="icon-update"></i><% end %>
+  		<%= link_to(activities_path, :title => 'All Activities') do %><i class="icon-list"></i><% end %>
+  	</div>
+  </div>
+</div>
 
 <p>
   <b>Distance:</b>
-  <%= @activity.distance %>
+  <%= @activity.distance %> miles
 </p>
 
 <p>
@@ -17,14 +26,14 @@
 
 <p>
   <b>User:</b>
-  <%= @activity.user_id %>
+  <%= link_to(@activity.user.fullname, @activity.user, :title => "View " + @activity.user.fullname + "'s profile" )%>
 </p>
 
 <p>
   <b>Event:</b>
-  <%= @activity.event_id %>
+  <%= link_to(@activity.event.event_name, @activity.event, :title => "View the " + @activity.event.event_name + " profile" ) %>
 </p>
 
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+<%#= link_to 'Edit', edit_activity_path(@activity) %>
+<%#= link_to 'Back', activities_path %>

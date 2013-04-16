@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Team name:</b>
-  <%= @team.team_name %>
-</p>
+<div class="page-title-holder">
+  <div class="page-title"><h1><%= @team.team_name %></h1></div>
+  <div style="float:left;">
+  	<div class="iconHolder">
+  		<%= link_to(edit_team_path(@team), :title => 'Update Team') do %><i class="icon-update"></i><% end %>
+  		<%= link_to(teams_path, :title => 'All Teams') do %><i class="icon-list"></i><% end %>
+  	</div>
+  </div>
+</div>
 
 <p>
   <b>Team details:</b>
@@ -12,14 +16,14 @@
 
 <p>
   <b>Team goal:</b>
-  <%= @team.team_goal %>
+  <%= number_to_currency(@team.team_goal) %>
 </p>
 
 <p>
   <b>Event:</b>
-  <%= @team.event_id %>
+  <%= link_to @team.event.event_name, @team.event, :title => 'View the ' + @team.event.event_name + ' profile' %>
 </p>
 
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<%#= link_to 'Edit', edit_team_path(@team) %>
+<%#= link_to 'Back', teams_path %>

@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-  attr_accessible :team_goal, :team_details, :team_name, :event, :users
+  attr_accessible :team_goal, :team_details, :team_name, :event, :users, :event_id
   
   belongs_to :event
   has_many :users

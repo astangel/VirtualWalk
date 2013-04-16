@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
+<%= image_tag(@agency.logo, :class => 'right') %>
+<div class="page-title-holder">
+  <div class="page-title"><h1><%= @agency.name %></h1></div>
+  <div style="float:left;">
+  	<div class="iconHolder">
+  		<%= link_to(edit_agency_path(@agency), :title => 'Update Agency') do %><i class="icon-update"></i><% end %>
+  		<%= link_to(agencies_path, :title => 'All Agencies') do %><i class="icon-list"></i><% end %>
+  	</div>
+  </div>
+</div>
 
 <p>
-  <b>Name:</b>
-  <%= @agency.name %>
-</p>
-
-<p>
-  <b>Logo:</b>
-  <%= @agency.logo %>
-</p>
-
-<p>
+	
   <b>Details:</b>
   <%= @agency.details %>
 </p>
 
 
-<%= link_to 'Edit', edit_agency_path(@agency) %> |
-<%= link_to 'Back', agencies_path %>
+
+<%#= link_to 'Edit', edit_agency_path(@agency) %>
+<%#= link_to 'Back', agencies_path %>

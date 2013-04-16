@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
+<%= image_tag(@sponsor.logo, :class => 'right') %>
+<div class="page-title-holder">
+  <div class="page-title"><h1><%= @sponsor.name %></h1></div>
+  <div style="float:left;">
+  	<div class="iconHolder">
+  		<%= link_to(edit_sponsor_path(@sponsor), :title => 'Update Sponsor') do %><i class="icon-update"></i><% end %>
+  		<%= link_to(sponsors_path, :title => 'All Sponsors') do %><i class="icon-list"></i><% end %>
+  	</div>
+  </div>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @sponsor.name %>
-</p>
 
-<p>
-  <b>Logo:</b>
-  <%= @sponsor.logo %>
-</p>
-
-
-<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
-<%= link_to 'Back', sponsors_path %>
+<%#= link_to 'Edit', edit_sponsor_path(@sponsor) %>
+<%#= link_to 'Back', sponsors_path %>

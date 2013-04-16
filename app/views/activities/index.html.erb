@@ -1,14 +1,13 @@
+<%= link_to(new_activity_path, :title => 'Create a New Agency') do %><div class="newBtn"><i class="icon-new"></i>Add Activity</div><% end %>
 <h1>Listing activities</h1>
 
-<table>
+<table class="object-list">
   <tr>
     <th>Distance</th>
     <th>Activity date</th>
     <th>Manual</th>
     <th>User</th>
     <th>Event</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -17,15 +16,17 @@
     <td><%= activity.distance %></td>
     <td><%= activity.activity_date %></td>
     <td><%= activity.manual %></td>
-    <td><%= activity.user_id %></td>
-    <td><%= activity.event_id %></td>
-    <td><%= link_to 'Show', activity %></td>
-    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-    <td><%= link_to 'Destroy', activity, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= activity.user.fullname %></td>
+    <td><%= activity.event.event_name %></td>
+    <td>
+      <div class="iconHolder">
+      	<%= link_to(activity, :title => 'View Activity') do %><i class="icon-show"></i><% end %>
+        <%= link_to(edit_activity_path(activity), :title => 'Update Activity') do %><i class="icon-update"></i><% end %>
+        <%= link_to(activity, confirm: 'Are you sure?', method: :delete, :title => 'Delete Activity') do %><i class="icon-delete"></i><% end %>
+      </div>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Activity', new_activity_path %>
+<%#= link_to 'New Activity', new_activity_path %>

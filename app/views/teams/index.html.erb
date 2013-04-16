@@ -1,29 +1,32 @@
-<h1>Listing teams</h1>
+<%= link_to(new_team_path, :title => 'Create a New Team') do %><div class="newBtn"><i class="icon-new"></i>Add Team</div><% end %>
+<h1>Teams</h1>
 
-<table>
+<table class="object-list">
   <tr>
     <th>Team name</th>
-    <th>Team details</th>
-    <th>Team goal</th>
     <th>Event</th>
-    <th></th>
-    <th></th>
+    <th>Team goal</th>
+    <th>Team details</th>
     <th></th>
   </tr>
 
 <% @teams.each do |team| %>
   <tr>
     <td><%= team.team_name %></td>
-    <td><%= team.team_details %></td>
-    <td><%= team.team_goal %></td>
-    <td><%= team.event_id %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= team.event.event_name %></td>
+    <td><%= number_to_currency(team.team_goal) %></td>
+    <td><%= truncate(team.team_details, :length => 40, :separator => ' ', :omission => '... (continued)') %></td>
+    <td>
+      <div class="iconHolder">
+      	<%= link_to(team, :title => 'View Team') do %><i class="icon-show"></i><% end %>
+        <%= link_to(edit_team_path(team), :title => 'Update Team') do %><i class="icon-update"></i><% end %>
+        <%= link_to(team, confirm: 'Are you sure?', method: :delete, :title => 'Delete Team') do %><i class="icon-delete"></i><% end %>
+      </div>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Team', new_team_path %>
+<%#= link_to 'New Team', new_team_path %>
