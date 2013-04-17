@@ -13,3 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$('.small-img').wrap('<div style="position:relative; overflow:visible;" />');
+$('.small-img').mouseover(function(){$(this).before($('<img/>').attr({'src':$(this).attr('src'),'class':'rollover-img'}).css({'z-index':'10', 'position':'absolute', 'top':$(this).height()/2, 'left':$(this).width()/2}).load(function(){$(this).css({'left':"+="+(-1*(this.width/2)),'top':"+="+(-1*(this.height/2))});}));$('.rollover-img').mouseout(function(){$(this).hide();});});
