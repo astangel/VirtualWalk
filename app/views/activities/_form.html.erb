@@ -20,16 +20,15 @@
     <%= f.datetime_select :activity_date %>
   </div>
   <div class="field">
-    <%= f.label :manual %><br />
-    <%= f.check_box :manual %>
+    <%= f.label :manual %>: <%= f.check_box :manual %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.collection_select :user_id, User.all.collect, :id, :fullname, :prompt => "Select a user" %>
   </div>
   <div class="field">
     <%= f.label :event_id %><br />
-    <%= f.number_field :event_id %>
+    <%= f.collection_select :event_id, Event.all.collect, :id, :event_name, :prompt => "Select an event" %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -28,21 +28,37 @@
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :crypted_password %><br />
-    <%= f.text_field :crypted_password %>
+    <%= f.label :password %><br />
+    <%= f.text_field :crypted_password, :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :password_salt %><br />
-    <%= f.text_field :password_salt %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.text_field :password_salt, :disabled => true %>
   </div>
   <div class="field">
-    <%= f.label :persistence_token %><br />
-    <%= f.text_field :persistence_token %>
+    <%= f.label :roles %><br />
+    <% for role in Role.find(:all) %>
+      <div style="margin-left:1em;">
+      	<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+      	<%= role.name %>
+      </div>
+    <% end %>	
   </div>
   <div class="field">
     <%= f.label :team_id %><br />
-    <%= f.number_field :team_id %>
+    <%= f.collection_select :team_id, Team.all.collect, :id, :team_name, :prompt => "Select a team" %>
   </div>
+  
+  <div class="field">
+  	<%= f.label :events %><br />
+    <% for event in Event.find(:all) %>
+      <div style="margin-left:1em;">
+        <%= check_box_tag "user[event_ids][]", event.id, @user.events.include?(event) %>
+        <%= event.event_name %> <small>(<%= event.date_range %>)</small>
+      </div>
+    <% end %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

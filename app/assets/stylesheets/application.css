@@ -87,3 +87,12 @@
   .page-title h1 {margin-top:0px; margin-right:.5em;}
   
   .small-img {max-height:1.5em;}
+  
+  .money-field{
+    padding-left:2em;
+    background-image: url("glyphicons_227_usd_15.png");
+    background-position: .25em center;
+    background-repeat: no-repeat;
+    opacity:0.6;
+    filter:alpha(opacity=60); /* For IE8 and earlier */
+  }

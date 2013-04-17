@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :goal %><br />
-    <%= f.number_field :goal %>
+    <%= f.text_field :goal, :class=>'money-field' %>
   </div>
   <div class="field">
     <%= f.label :details %><br />
@@ -37,11 +37,11 @@
   </div>
   <div class="field">
     <%= f.label :agency_id %><br />
-    <%= f.number_field :agency_id %>
+    <%= f.collection_select :agency_id, Agency.all.collect, :id, :name, :prompt => "Select an agency" %>
   </div>
   <div class="field">
     <%= f.label :sponsor_id %><br />
-    <%= f.number_field :sponsor_id %>
+    <%= f.collection_select :sponsor_id, Sponsor.all.collect, :id, :name, :prompt => "Select a sponsor" %>
   </div>
   <div class="actions">
     <%= f.submit %>

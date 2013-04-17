@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :team_goal %><br />
-    <%= f.number_field :team_goal %>
+    <%= f.text_field :team_goal, :class => 'money-field' %>
   </div>
   <div class="field">
     <%= f.label :event_id %><br />
-    <%= f.number_field :event_id %>
+    <%= f.collection_select :event_id, Event.all(:conditions => ['end_date > ?', Time.now.beginning_of_day]).collect, :id, :event_name, :prompt => "Select an event" %>
   </div>
   <div class="actions">
     <%= f.submit %>

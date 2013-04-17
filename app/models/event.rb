@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   
   has_many :teams
   has_many :activities
+  has_many :registrations
   has_many :users, :through => :registrations
   belongs_to :agency
   belongs_to :sponsor
