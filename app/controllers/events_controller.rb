@@ -41,7 +41,12 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-
+    @overlap_start = Event.where("agency_id = ? AND (start_date < ? AND end_date > ?)", @event.agency_id, @event.start_date, @event.start_date)
+    @overlap_end = Event.where("agency_id = ? AND (start_date < ? AND end_date > ?)", @event.agency_id, @event.end_date, @event.end_date)
+    if ((@overlap_start.count > 0) || (@overlap_end.count > 0))
+      flash[:error] = "Only one " + @event.agency.name + " event may run at any time."
+      redirect_to @event
+    else
 
     respond_to do |format|
       if @event.save
@@ -51,6 +56,7 @@ class EventsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 
