@@ -5,6 +5,8 @@ class Event < ActiveRecord::Base
   validates :start_date, :presence => true
   validates :event_name, :presence => true
   validates :goal, :presence => true
+  validates :sponsor, :presence => true
+  validates :agency, :presence => true
 
   
   has_many :teams

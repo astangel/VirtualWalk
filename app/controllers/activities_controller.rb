@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = Activity.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
@@ -41,6 +41,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(params[:activity])
+    @activity.manual = true
 
     respond_to do |format|
       if @activity.save
@@ -57,6 +58,7 @@ class ActivitiesController < ApplicationController
   # PUT /activities/1.json
   def update
     @activity = Activity.find(params[:id])
+    @activity.manual = true
 
     respond_to do |format|
       if @activity.update_attributes(params[:activity])

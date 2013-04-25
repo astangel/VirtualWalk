@@ -22,7 +22,7 @@
     <td>
       <div class="iconHolder">
       	<%= link_to(user, :title => 'View User') do %><i class="icon-show"></i><% end %>
-        <%= link_to(edit_activity_path(user), :title => 'Update User') do %><i class="icon-update"></i><% end %>
+        <%= link_to(edit_user_path(user), :title => 'Update User') do %><i class="icon-update"></i><% end %>
         <%= link_to(user, confirm: 'Are you sure?', method: :delete, :title => 'Delete User') do %><i class="icon-delete"></i><% end %>
       </div>
     </td>
