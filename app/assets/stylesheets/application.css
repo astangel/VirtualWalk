@@ -44,7 +44,10 @@
   .itemizedList li:hover {background-color:#BBB;}
   .itemizedList li a:hover {background-color:inherit;}
   .object-list td {padding:0px 1em;}
+  .object-list tr td:last-child {width:90px;}
   #contents>h1:first-of-type	 {margin-top:.15em;}
+  .eventTitle {border-bottom:1px solid #999; vertical-align:top; padding-top:1em !important;}
+  .eventTitle h3 {margin: 0px 1em 0px 0px;}
 
   
   .iconHolder {background-color:#CCC; border-radius:.75em; padding:.25em .75em;}

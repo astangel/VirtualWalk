@@ -3,13 +3,9 @@
 
 <table class="object-list">
   <tr>
-    <th>Logo</th>
-    <th>Event name</th>
-    <th>Charity</th>
     <th>Dates</th>
     <th>Goal</th>
     <th>Details</th>
-    <th>Logo</th>
     <th>Sponsor</th>
     <th></th>
 
@@ -17,9 +13,18 @@
 
 <% @events.each do |event| %>
   <tr>
-  	<td><center><%= image_tag(event.logo, :class => 'small-img') %></center></td>
-    <td><%= event.event_name %></td>
-    <td><%= event.agency.name %></td>
+    <td colspan="7" class="eventTitle">
+    	<div style="float:left;"><h3><%= event.event_name %></h3></div>
+    	<div style="float:left; overflow:visible;">
+    		<% if !(event.logo.nil?)%>
+  		      <center><%= image_tag(event.logo, :class => 'small-img') %></center>
+  		    <% end %>
+    	</div>
+    	<div style="float:right; vertical-align: bottom;">(<%= event.agency.name %>)</div>
+    	
+    </td>
+  </tr>
+  <tr>
     <td><%= event.date_range %></td>
     <td><%= number_to_currency(event.goal) %></td>
     <td><%= truncate(event.details, :length => 40, :separator => ' ', :omission => '... (continued)') %></td>
