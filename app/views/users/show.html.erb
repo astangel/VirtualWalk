@@ -29,7 +29,9 @@
 
 <p>
   <b>Team:</b>
-  <%= link_to @user.team.team_name, @user.team %>
+  <% @user.teams.each do |c| %>
+    <li><%= link_to c.team_name, c %></li>
+  <%end %>
 </p>
 
 <p>

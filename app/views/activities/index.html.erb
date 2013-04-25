@@ -17,7 +17,7 @@
     <td><%= activity.activity_date %></td>
     <td><%= activity.manual %></td>
     <td><%= activity.user.fullname %></td>
-    <td><%= activity.event.event_name %></td>
+    <td><%= !(activity.event.nil?) ? activity.event.event_name : raw("<em>**Not Set**</em>")%></td>
     <td>
       <div class="iconHolder">
       	<%= link_to(activity, :title => 'View Activity') do %><i class="icon-show"></i><% end %>

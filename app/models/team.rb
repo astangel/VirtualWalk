@@ -6,5 +6,6 @@ class Team < ActiveRecord::Base
   validates :event, :presence => true
   
   belongs_to :event
-  has_many :users
+  has_many :users, :through => :registrations
+  has_many :registrations
 end

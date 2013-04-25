@@ -18,7 +18,10 @@
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
     <td><%= mail_to user.email %></td>
-    <td><%= user.team.team_name %></td>
+    <td><% user.teams.each do |c| %>
+    	  <li><%= c.team_name %></li>
+    	<%end %>
+    </td>
     <td>
       <div class="iconHolder">
       	<%= link_to(user, :title => 'View User') do %><i class="icon-show"></i><% end %>

@@ -44,10 +44,6 @@
       </div>
     <% end %>	
   </div>
-  <div class="field">
-    <%= f.label :team_id %><br />
-    <%= f.collection_select :team_id, Team.all.collect, :id, :team_name, :prompt => "Select a team" %>
-  </div>
   
   <div class="field">
   	<%= f.label :events %><br />
