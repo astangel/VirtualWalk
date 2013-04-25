@@ -1,4 +1,5 @@
-<h1>Listing registrations</h1>
+<%= link_to(new_registration_path, :title => 'Create a New Registration') do %><div class="newBtn"><i class="icon-new"></i>Add Registration</div><% end %>
+<h1>Registrations</h1>
 
 <table>
   <tr>
@@ -6,22 +7,23 @@
     <th>Event</th>
     <th>Personal goal</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
-<% @registrations.each do |registration| %>
+
+<% str = (can? :manage, :all)?'@registrations':'@userRegistrations' %>
+<% eval(str).each do |registration| %>
   <tr>
-    <td><%= registration.user_id %></td>
-    <td><%= registration.event_id %></td>
-    <td><%= registration.personal_goal %></td>
-    <td><%= link_to 'Show', registration %></td>
-    <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-    <td><%= link_to 'Destroy', registration, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= registration.user.fullname %></td>
+    <td><%= registration.event.event_name %></td>
+    <td><%= number_to_currency(registration.personal_goal) %></td>
+    <td>
+      <div class="iconHolder">
+      	<%= link_to(registration, :title => 'View Registration') do %><i class="icon-show"></i><% end %>
+        <%= link_to(edit_registration_path(registration), :title => 'Update Registration') do %><i class="icon-update"></i><% end %>
+        <%= link_to(registration, confirm: 'Are you sure?', method: :delete, :title => 'Delete Registration') do %><i class="icon-delete"></i><% end %>
+      </div></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Registration', new_registration_path %>

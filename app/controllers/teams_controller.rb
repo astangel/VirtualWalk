@@ -3,10 +3,15 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = Team.all
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @teams }
+    end
     end
   end
 
@@ -14,10 +19,15 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
+    end
     end
   end
 
@@ -25,10 +35,15 @@ class TeamsController < ApplicationController
   # GET /teams/new.json
   def new
     @team = Team.new
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @team }
+    end
     end
   end
 

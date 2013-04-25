@@ -26,9 +26,9 @@
   <div class="field">
     <%= f.label :event_id %><br />
     <%#= f.collection_select :event_id, Event.all.collect, :id, :event_name, :prompt => "Select an event" %>
-    <% if !(@activity.user.nil?) %>
-        <% if (@activity.user.events.count>0) %>
-          <%= f.select :event_id, Event.find_all_by_id(@activity.user.event_ids).collect {|x| [x.event_name, x.id]}, {:prompt => "Select an event"}, {:id => "sltEvents"} %>
+    <% if !(current_user.nil?) %>
+        <% if (current_user.events.count>0) %>
+          <%= f.select :event_id, Event.find_all_by_id(current_user.event_ids).collect {|x| [x.event_name, x.id]}, {:prompt => "Select an event"}, {:id => "sltEvents"} %>
         <%else%>
           <%= raw("<em>Only Available after you register for an event</em>") %>
         <%end%>

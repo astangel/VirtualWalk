@@ -1,20 +1,28 @@
 <p id="notice"><%= notice %></p>
+<div class="page-title-holder">
+  <div class="page-title"><h1>Registration</h1></div>
+  <div style="float:left;">
+  	<div class="iconHolder">
+  		<% if current_user %><%= link_to(edit_registration_path(@registration), :title => 'Update Registrations') do %><i class="icon-update"></i><% end %><% end %>
+  		<%= link_to(registrations_path, :title => 'All Registrations') do %><i class="icon-list"></i><% end %>
+  	</div>
+  </div>
+</div>
 
 <p>
   <b>User:</b>
-  <%= @registration.user_id %>
+  <%= @registration.user.fullname %>
 </p>
 
 <p>
   <b>Event:</b>
-  <%= @registration.event_id %>
+  <%= @registration.event.event_name %>
 </p>
 
 <p>
   <b>Personal goal:</b>
-  <%= @registration.personal_goal %>
+  <%= number_to_currency(@registration.personal_goal) %>
 </p>
 
 
-<%= link_to 'Edit', edit_registration_path(@registration) %> |
-<%= link_to 'Back', registrations_path %>
+

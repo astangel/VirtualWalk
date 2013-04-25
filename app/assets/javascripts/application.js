@@ -16,4 +16,5 @@
 $(document).ready(function(){
   $('.small-img').wrap('<div style="position:relative; overflow:visible;" />');
   $('.small-img').mouseover(function(){$(this).before($('<img/>').attr({'src':$(this).attr('src'),'class':'rollover-img'}).css({'z-index':'10', 'position':'absolute', 'background-color':'#FFF', 'top':$(this).height()/2, 'left':-$(this).width()/8}).load(function(){$(this).css({'top':"+="+(-1*(this.height/2))});}));$('.rollover-img').mouseout(function(){$(this).hide();});});
+  $('.registerCheck').click(function(){window.location = $(this).attr('regLink');});
 });

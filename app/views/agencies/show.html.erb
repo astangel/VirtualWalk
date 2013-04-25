@@ -4,7 +4,7 @@
   <div class="page-title"><h1><%= @agency.name %></h1></div>
   <div style="float:left;">
   	<div class="iconHolder">
-  		<%= link_to(edit_agency_path(@agency), :title => 'Update Agency') do %><i class="icon-update"></i><% end %>
+  		<% if current_user %><%= link_to(edit_agency_path(@agency), :title => 'Update Agency') do %><i class="icon-update"></i><% end %><%end%>
   		<%= link_to(agencies_path, :title => 'All Agencies') do %><i class="icon-list"></i><% end %>
   	</div>
   </div>

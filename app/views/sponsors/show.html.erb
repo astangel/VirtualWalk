@@ -4,7 +4,7 @@
   <div class="page-title"><h1><%= @sponsor.name %></h1></div>
   <div style="float:left;">
   	<div class="iconHolder">
-  		<%= link_to(edit_sponsor_path(@sponsor), :title => 'Update Sponsor') do %><i class="icon-update"></i><% end %>
+  		<% if current_user %><%= link_to(edit_sponsor_path(@sponsor), :title => 'Update Sponsor') do %><i class="icon-update"></i><% end %><%end%>
   		<%= link_to(sponsors_path, :title => 'All Sponsors') do %><i class="icon-list"></i><% end %>
   	</div>
   </div>

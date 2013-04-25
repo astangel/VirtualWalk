@@ -36,8 +36,8 @@
 
 <p>
   <b>Events:</b>
-  <% for event in Event.find(:all) %>
-    <li style="margin-left:1em;"><%= event.event_name %> <small>(<%= event.date_range %>)</small></li>
+  <% for event in @user.events.find(:all) %>
+    <li style="margin-left:1em;"><%= link_to event.event_name, event %> <small>(<%= event.date_range %>)</small></li>
   <% end %>
 </p>
 

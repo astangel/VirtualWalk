@@ -3,7 +3,7 @@
   <div class="page-title"><h1><%= @team.team_name %></h1></div>
   <div style="float:left;">
   	<div class="iconHolder">
-  		<%= link_to(edit_team_path(@team), :title => 'Update Team') do %><i class="icon-update"></i><% end %>
+  		<% if current_user %><%= link_to(edit_team_path(@team), :title => 'Update Team') do %><i class="icon-update"></i><% end %><%end%>
   		<%= link_to(teams_path, :title => 'All Teams') do %><i class="icon-list"></i><% end %>
   	</div>
   </div>

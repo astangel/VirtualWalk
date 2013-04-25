@@ -3,10 +3,14 @@ class AgenciesController < ApplicationController
   # GET /agencies.json
   def index
     @agencies = Agency.all
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agencies }
+    end
     end
   end
 
@@ -14,10 +18,14 @@ class AgenciesController < ApplicationController
   # GET /agencies/1.json
   def show
     @agency = Agency.find(params[:id])
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @agency }
+    end
     end
   end
 
@@ -25,10 +33,14 @@ class AgenciesController < ApplicationController
   # GET /agencies/new.json
   def new
     @agency = Agency.new
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @agency }
+    end
     end
   end
 

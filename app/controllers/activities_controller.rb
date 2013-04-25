@@ -3,21 +3,28 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.all
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activities }
-    end
+    end end
   end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
     @activity = Activity.find(params[:id])
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @activity }
+    end
     end
   end
 
@@ -25,10 +32,14 @@ class ActivitiesController < ApplicationController
   # GET /activities/new.json
   def new
     @activity = Activity.new
-    
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @activity }
+    end
     end
   end
 

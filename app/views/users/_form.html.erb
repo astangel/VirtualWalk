@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :crypted_password, :disabled => true %>
+    <%= f.password_field :password %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_salt, :disabled => true %>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :roles %><br />

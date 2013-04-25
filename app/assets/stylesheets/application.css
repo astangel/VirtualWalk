@@ -22,14 +22,16 @@
   .error {font-weight:bold; color:#FF0000;}
   
   .menu-pill {margin:0 auto;}
-  .menu-home {float: left; padding-top:.4em;}
+  .menu-home {float: left; padding-top:.4em; margin-left:2em;}
   #pageHolder {width:800px; margin:0 auto; border:1px solid #999; box-shadow: 0 0 18px #999;}
   #masthead {width:100%; height:7em; background-color:#BBB; padding:1.5em 5em; color:#FFF; text-align:left;}
-  #menu {width:100%; height:2em; background-color:#DEF;border-top:1px solid #ABC; border-bottom:1px solid #ABC; padding:0 5em;}
-  #menu li {display:inline-block;position:relative; list-style:none; margin:0px; border-left:1px solid #ABC; border-right:1px solid #ABC; height:2em; line-height:2em; padding:0 1em;}
+  #menu {width:100%; height:2em; background-color:#DEF;border-top:1px solid #ABC; border-bottom:1px solid #ABC; padding:0;}
+  #menu li {display:inline-block;position:relative; list-style:none; margin:0px .25em; border-left:1px solid #ABC; border-right:1px solid #ABC; height:2em; line-height:2em; padding:0 .5em;}
   #menu li:hover {background-color:#9AB; color:#FFF;}
   #menu li a {height:2em; line-height:2em; width:100%;}
   #menu li a:hover, #menu li:hover a {background-color:inherit; color:#FFF;}
+  #menu #login, #menu #register, #menu #logout {float:right;}
+  
   #contents {width:auto; height:auto; min-height:30em; background-color:#FFF; padding:1.5em;}
   #footer {width:100%; height:3.5em; background-color:#BBB; padding:1.5em 5em;}
   .tdID {border-right:1px solid #BBB;  max-width:3em;}
@@ -65,13 +67,18 @@
     background-position: 14px 14px;
     background-repeat: no-repeat;
   }
+  [class^="icon-"]:hover, [class*=" icon-"]:hover {background-image: url("glyphicons-halflings-white.png");}
+  .icon-none {background-image:none !important;}
   .icon-update {background-position: -360px -144px; /*background-position: 0 -72px;*/}
   .icon-show {background-position: -336px 0;}
   .icon-delete {background-position: -456px 0;}
   .icon-list {background-position: -360px -48px; /*background-position: -264px  0*/}
   .icon-home {background-position: 0 -24px;}
   .icon-new {background-position: -408px -96px; background-image: url("glyphicons-halflings-white.png");}
-  [class^="icon-"]:hover, [class*=" icon-"]:hover {background-image: url("glyphicons-halflings-white.png");}
+  .icon-checked {background-position: -288px 0;}
+  .icon-checked:hover {background-image:url("glyphicons-halflings.png");}
+  .icon-none:hover {background-position: -288px 0; background-image: url("glyphicons-halflings-white.png") !important;}
+
 
   [class$="Btn"], [class*="Btn "] {
     background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
@@ -104,3 +111,6 @@
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
   }
+  
+  .registerCheck {border:1px solid #999; border-radius: 5px; cursor:pointer;}
+  .registerCheck:hover {background-color:#CCC;}

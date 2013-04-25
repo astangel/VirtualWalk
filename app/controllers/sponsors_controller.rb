@@ -3,10 +3,14 @@ class SponsorsController < ApplicationController
   # GET /sponsors.json
   def index
     @sponsors = Sponsor.all
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sponsors }
+    end
     end
   end
 
@@ -14,10 +18,14 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1.json
   def show
     @sponsor = Sponsor.find(params[:id])
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sponsor }
+    end
     end
   end
 
@@ -25,10 +33,14 @@ class SponsorsController < ApplicationController
   # GET /sponsors/new.json
   def new
     @sponsor = Sponsor.new
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @sponsor }
+    end
     end
   end
 

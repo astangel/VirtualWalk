@@ -3,10 +3,16 @@ class RegistrationsController < ApplicationController
   # GET /registrations.json
   def index
     @registrations = Registration.all
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
+    
+    @userRegistrations = Registration.where(:user_id => current_user)  
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @registrations }
+    end
     end
   end
 
@@ -14,10 +20,14 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1.json
   def show
     @registration = Registration.find(params[:id])
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @registration }
+    end
     end
   end
 
@@ -25,10 +35,14 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @registration }
+    end
     end
   end
 
@@ -41,6 +55,7 @@ class RegistrationsController < ApplicationController
   # POST /registrations.json
   def create
     @registration = Registration.new(params[:registration])
+    @registration.user_id = current_user
 
     respond_to do |format|
       if @registration.save

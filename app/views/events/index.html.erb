@@ -1,13 +1,16 @@
+<% if current_user%>
 <%= link_to(new_event_path, :title => 'Create a New Event') do %><div class="newBtn"><i class="icon-new"></i>Add Event</div><% end %>
+<% end %>
 <h1>Events</h1>
 
 <table class="object-list">
   <tr>
+    <% if current_user %><th></th><% end %>
     <th>Dates</th>
     <th>Goal</th>
     <th>Details</th>
     <th>Sponsor</th>
-    <th></th>
+    <% if current_user %><th></th><% end %>
 
   </tr>
 
@@ -25,17 +28,22 @@
     </td>
   </tr>
   <tr>
+  	<% if can? :manage, :all %><td width="15" style="padding:0;"><div class="registerCheck icon-<%= (@registrations.include?(event)?'checked':'none') %>" regLink="<%= (@registrations.include?(event)?'#':new_registration_path)  %>" /></td><% end %>
     <td><%= event.date_range %></td>
     <td><%= number_to_currency(event.goal) %></td>
     <td><%= truncate(event.details, :length => 40, :separator => ' ', :omission => '... (continued)') %></td>
     <td><%= event.sponsor.name %></td>
+    
     <td>
       <div class="iconHolder">
       	<%= link_to(event, :title => 'View Event') do %><i class="icon-show"></i><% end %>
+      	<% if current_user %>
         <%= link_to(edit_event_path(event), :title => 'Update Event') do %><i class="icon-update"></i><% end %>
         <%= link_to(event, confirm: 'Are you sure?', method: :delete, :title => 'Delete Event') do %><i class="icon-delete"></i><% end %>
+        <% end %>
       </div>
     </td>
+    
   </tr>
 <% end %>
 </table>

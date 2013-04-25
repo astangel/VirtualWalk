@@ -3,10 +3,14 @@ class RolesController < ApplicationController
   # GET /roles.json
   def index
     @roles = Role.all
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @roles }
+    end
     end
   end
 
@@ -14,10 +18,14 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     @role = Role.find(params[:id])
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @role }
+    end
     end
   end
 
@@ -25,10 +33,14 @@ class RolesController < ApplicationController
   # GET /roles/new.json
   def new
     @role = Role.new
-
+    if !current_user
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @role }
+    end
     end
   end
 
