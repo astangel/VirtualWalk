@@ -4,7 +4,8 @@ VirtualWalk::Application.routes.draw do
         #API routes
         resources :events
         match 'users/login', :to => 'users#login'
-        match 'users/validate_token/:token', :to => 'users#validate_token'  
+        match 'users/validate_token/:token', :to => 'users#validate_token' 
+        match 'users/destroy', :to => 'users#destroy' 
         match 'events/show/:id', :to => 'events#show'
         match 'events/teams/:id', :to => 'events#teams'
     end

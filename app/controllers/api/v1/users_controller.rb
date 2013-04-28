@@ -3,7 +3,7 @@ module Api
     
     
     class UsersController < ApplicationController
-      before_filter :require_http_auth_user, :only => :login
+      #before_filter :require_http_auth_user, :only => :login
       
       respond_to :json
       
@@ -29,6 +29,13 @@ module Api
       end # end def
       
       
+    # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+
+  end
       
     end #end class
         
