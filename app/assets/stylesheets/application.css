@@ -18,9 +18,12 @@
   
   .right {float:right !important; margin-left:1em;}
   .left {float:left !important; margin-right:1em;}
+  .no-margin {margin:0px !important;}
   
   .error {font-weight:bold; color:#FF0000;}
   .notice {font-weight:bold; color:#00FF00;}
+  
+  .subitem {color:#999; font-style:italic;}
   
   .menu-pill {margin:0 auto;}
   .menu-home {float: left; padding-top:.4em; margin-left:2em;}
@@ -46,14 +49,19 @@
   .itemizedList li:last-child{border-bottom:.25em solid #ABC;}
   .itemizedList li:hover {background-color:#BBB;}
   .itemizedList li a:hover {background-color:inherit;}
+  
+  /*-- For use in object tables -- */ 
   .object-list td {padding:0px 1em;}
-  .object-list tr td:last-child {width:90px;}
+  .object-list tr.no-padding>td {padding:0px;}
+  .object-list tr td:last-child {padding-left:15px; width:90px;}
+  .object-list tr td.object-list-subitem {padding:0 0 1em 1em;}
+  .object-list tr td.object-list-subitem p{font-size:.85em; font-style:italic; margin:0; background-color:#EFE; padding-left:.15em;}
   #contents>h1:first-of-type	 {margin-top:.15em;}
   .eventTitle {border-bottom:1px solid #999; vertical-align:top; padding-top:1em !important;}
   .eventTitle h3 {margin: 0px 1em 0px 0px;}
 
   
-  .iconHolder {background-color:#CCC; border-radius:.75em; padding:.25em .75em;}
+  .iconHolder {background-color:#CCC; border-radius:.75em; padding:.05em .75em;}
   
   [class^="icon-"], [class*=" icon-"] {
     margin-left:2px;
