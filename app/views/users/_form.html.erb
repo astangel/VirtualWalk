@@ -39,7 +39,7 @@
     <%= f.label :roles %><br />
     <% for role in Role.find(:all) %>
       <div style="margin-left:1em;">
-      	<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+      	<%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :disabled => true %>
       	<%= role.name %>
       </div>
     <% end %>	

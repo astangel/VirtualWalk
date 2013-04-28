@@ -20,6 +20,7 @@
   .left {float:left !important; margin-right:1em;}
   
   .error {font-weight:bold; color:#FF0000;}
+  .notice {font-weight:bold; color:#00FF00;}
   
   .menu-pill {margin:0 auto;}
   .menu-home {float: left; padding-top:.4em; margin-left:2em;}
