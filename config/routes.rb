@@ -5,6 +5,7 @@ VirtualWalk::Application.routes.draw do
         match 'users/login', :to => 'users#login'
         match 'users/validate_token/:token', :to => 'users#validate_token'        
     end
+  
   end
 
   resources :users
