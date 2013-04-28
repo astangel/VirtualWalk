@@ -1,4 +1,12 @@
 VirtualWalk::Application.routes.draw do
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do        
+        #API routes
+        match 'users/login', :to => 'users#login'
+        match 'users/validate_token/:token', :to => 'users#validate_token'        
+    end
+  end
+
   resources :users
   
   resources :user_sessions
