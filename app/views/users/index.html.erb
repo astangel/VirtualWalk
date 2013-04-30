@@ -14,7 +14,7 @@
 
 <% @users.each do |user| %>
   <tr class="no-padding">
-    <td><%= user.username %></td>
+    <td><%= (user==current_user)?"*":""%><%= user.username %></td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
     <td><%= mail_to user.email %></td>

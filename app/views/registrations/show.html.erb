@@ -11,7 +11,7 @@
 
 <p>
   <b>User:</b>
-  <%= @registration.user.fullname %>
+  <%= !(@registration.user.nil?) ? @registration.user.fullname : raw("<em>User name not set.</em>") %>
 </p>
 
 <p>
