@@ -16,7 +16,7 @@
     <td><%= activity.distance %></td>
     <td><%= activity.activity_date %></td>
     <td><%= activity.manual %></td>
-    <td><%= activity.user.fullname %></td>
+    <td><%= !(activity.user.nil?) ? activity.user.fullname : raw("<em>**Not Set**</em>") %></td>
     <td><%= !(activity.event.nil?) ? activity.event.event_name : raw("<em>**Not Set**</em>")%></td>
     <td>
       <div class="iconHolder">
