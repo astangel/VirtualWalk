@@ -12,7 +12,7 @@
   <% end %>
   <h1><%=current_user.first_name%></h1>
   <div class="field">
-    <%= f.label :event_id %><br />
+    <%= f.label :event %><br />
     <%= f.collection_select :event_id, Event.all(:conditions => ['end_date > ?', Time.now.beginning_of_day]).collect, :id, :event_name, :prompt => "Select an event" %>
   </div>
   <div class="field">
