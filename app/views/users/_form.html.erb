@@ -50,7 +50,7 @@
   	<%= f.label :events %>
   	<ul>
     <% @user.events.each do |e| %>
-      <li><%= link_to e.event_name, e %></li>
+      <li><%= link_to e.event_name, e %> <small>(<%= e.date_range %>)</small></li>
     <% end %>
     </ul>
   </div>
