@@ -23,6 +23,13 @@
   <b>Event:</b>
   <%= link_to @team.event.event_name, @team.event, :title => 'View the ' + @team.event.event_name + ' profile' %>
 </p>
+<p><b>Participants</b><br/>
+	<ul>
+	<% @team.users.each do |u| %>
+	  <li><%= link_to u.fullname, u%></li>
+	<% end %>
+	</ul>
+</p>
 
 
 <%#= link_to 'Edit', edit_team_path(@team) %>

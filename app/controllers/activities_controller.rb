@@ -36,7 +36,7 @@ class ActivitiesController < ApplicationController
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-      @activity.user_id = current_user
+      
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @activity }
@@ -54,7 +54,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(params[:activity])
     @activity.manual = true
-    @activity.user_id = current_user
+    @activity.user = current_user
 
     respond_to do |format|
       if @activity.save

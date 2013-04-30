@@ -5,10 +5,18 @@
   <div style="float:left;">
   	<div class="iconHolder">
   		<% if current_user %><%= link_to(edit_sponsor_path(@sponsor), :title => 'Update Sponsor') do %><i class="icon-update"></i><% end %><%end%>
-  		<%= link_to(sponsors_path, :title => 'All Sponsors') do %><i class="icon-list"></i><% end %>
+  		<%= link_to(sponsors_path, :title => 'All Sponsors') do %><i class="icon-list"></i>
+  		<% end %>
   	</div>
   </div>
 </div>
+<p><b>Sponsored Events</b><br/>
+	<ul>
+	<% @sponsor.events.each do |s| %>
+	  <li><%= link_to s.event_name, s%></li>
+	<% end %>
+	</ul>
+</p>
 
 
 <%#= link_to 'Edit', edit_sponsor_path(@sponsor) %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--p id="notice"><%= notice %></p-->
 <%= image_tag(@event.logo, :class => 'right') %>
 <div class="page-title-holder">
   <div class="page-title"><h1><%= @event.event_name %></h1></div>
@@ -30,9 +30,18 @@
 <p>
   <b>Event Sponsor:</b><br />
   <%= link_to(@event.sponsor, :title => 'View the ' + @event.sponsor.name + ' profile') do %>
-    <%= image_tag(@event.sponsor.logo, :class => 'small-img')%>
+    <%= image_tag(@event.sponsor.logo, :class => 'small-img left', :style => '')%>
     <%= @event.sponsor.name %>
   <%end%>
+</p>
+
+<p><b>Teams:</b><br/>
+	<ul>
+	<% @event.teams.each do |t| %>
+	  <li><%= link_to t.team_name, t%> (<%= t.users.count%>)
+	  </li>
+	<% end %>
+	</ul>
 </p>
 
 

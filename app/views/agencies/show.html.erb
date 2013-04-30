@@ -15,6 +15,13 @@
   <b>Details:</b>
   <%= @agency.details %>
 </p>
+<p><b>Held Events</b><br/>
+	<ul>
+	<% @agency.events.each do |e| %>
+	  <li><%= link_to e.event_name, e%></li>
+	<% end %>
+	</ul>
+</p>
 
 
 

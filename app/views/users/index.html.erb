@@ -4,6 +4,7 @@
 
 <table class="object-list">
   <tr>
+  	<th style="width:.5em"></th>
     <th>Username</th>
     <th>First name</th>
     <th>Last name</th>
@@ -14,7 +15,8 @@
 
 <% @users.each do |user| %>
   <tr class="no-padding">
-    <td><%= (user==current_user)?"*":""%><%= user.username %></td>
+  	<td style="text-align:right;"><%= (user==current_user)?"*":""%></td>
+    <td><%= user.username %></td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
     <td><%= mail_to user.email %></td>
