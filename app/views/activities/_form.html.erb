@@ -21,8 +21,8 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
-    <%#= f.collection_select :user_id, User.all.collect, :id, :fullname, :prompt => "Select a user" %>
-    <%= !(@activity.user.nil?) ? @activity.user.fullname : raw("<em>User not set</em>")%>
+    <%= f.collection_select :user_id, User.all.collect, :id, :fullname, :prompt => "Select a user" %>
+    <%#= !(@activity.user.nil?) ? @activity.user.fullname : raw("<em>User not set</em>")%>
     <%#= f.hidden_field :user, :value => :user %>
     
   </div>
