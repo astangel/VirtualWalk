@@ -16,6 +16,13 @@
     <%= f.collection_select :event_id, Event.all(:conditions => ['end_date > ?', Time.now.beginning_of_day]).collect, :id, :event_name, :prompt => "Select an event" %>
   </div>
   <div class="field">
+  <% if !@registration.event.nil? %>
+    <%= f.label :team %><br />
+    <%#= f.collection_select :team_id, Team.all(:conditions => ['event.id = ?', @registration.event.id]).collect, :id, :team_name, :prompt => "Select an event" %>
+    <%= f.select :team_id, Team.find_all_by_id(@registration.event.team_ids).collect {|x| [x.team_name, x.id]}, {:prompt => "Select a team"}, {:id => "sltTeams"} %>
+  <% end %>
+  </div>
+  <div class="field">
     <%= f.label :personal_goal %><br />
     <%= f.text_field :personal_goal, :class=>'money-field' %>
   </div>
