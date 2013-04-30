@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div style="background-color:#DDD;"><u><%=current_user%></u><br /><%=current_user.first_name%>|<%=current_user.last_name%> => <%=current_user.fullname%></div>
+  <div style="background-color:#DDD;"><u><%=current_user%></u><br /><%=current_user.first_name%>|<%=current_user.last_name%> => <%=current_user.fullname %></div>
   <div class="field">
     <%= f.label :event %><br />
     <%= f.collection_select :event_id, Event.all(:conditions => ['end_date > ?', Time.now.beginning_of_day]).collect, :id, :event_name, :prompt => "Select an event" %>
