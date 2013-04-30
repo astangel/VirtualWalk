@@ -39,7 +39,7 @@ class RegistrationsController < ApplicationController
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-    @registration.user_id = current_user
+    #@registration.user_id = current_user
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @registration }
@@ -56,7 +56,7 @@ class RegistrationsController < ApplicationController
   # POST /registrations.json
   def create
     @registration = Registration.new(params[:registration])
-    @registration.user_id = current_user
+    @registration.user = current_user
 
     respond_to do |format|
       if @registration.save
