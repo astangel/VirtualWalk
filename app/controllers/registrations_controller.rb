@@ -20,6 +20,8 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1.json
   def show
     @registration = Registration.find(params[:id])
+    @activities = Activity.where(:user_id => @registration.user_id)
+    @act_totals = Activity.where(:user_id => @registration.user_id).sum("distance")
     if !current_user
       flash[:error] = "Access Denied."
       redirect_to root_url

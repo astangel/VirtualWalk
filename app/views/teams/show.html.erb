@@ -9,6 +9,18 @@
   </div>
 </div>
 
+<div id="iphone_meter" style="position:relative; width:112px; height:223px; margin:0 0 1.5em 2em; float:right;">
+	<div style="width:100px; height:211px; border:1px solid #677; border-radius: 10px; background-color:#fff; position:absolute; left:0; top:0; z-index:1; overflow:hidden; box-shadow: 1px 3px 8px #999;">
+		<div class="money_fade" style="width:100px; height:245px; border-radius: 0px; position:absolute; left:0px; top:<%= 211 - (211*@act_totals/@team.team_goal) %>px; z-index:2;"></div>
+	
+	<div style="width:84px; height:145px; border-radius: 0px; background-color:#AAA; position:absolute; left:8px; top:35px; z-index:4; opacity:0.88; filter:alpha(opacity=88); /* For IE8 and earlier */">
+		<p style="text-align:center; vertical-align:middle; font-size:23px; font-weight:bold; line-height:145px; margin:0; padding:0;"><%= number_to_percentage((100*@act_totals/@team.team_goal), :precision => 0) %> </p>
+	</div>
+	<div style="width:20px; height:20px; border-radius: 10px; background-color:#777; position:absolute; left:40px; top:185px; z-index:4; box-shadow: 0px 0px 8px 1px #fff inset; border: 1px solid #999; opacity:0.5; filter:alpha(opacity=50);"></div>
+	<div style="width:26px; height:3px; border-radius: 20%%; background-color:#000; position:absolute; left:37px; top:15px; z-index:4;"></div>
+	</div>
+</div>
+
 <p>
   <b>Team details:</b>
   <%= @team.team_details %>
@@ -16,7 +28,7 @@
 
 <p>
   <b>Team goal:</b>
-  <%= number_to_currency(@team.team_goal) %>
+  <%= @act_totals %> / <%= @team.team_goal %> miles
 </p>
 
 <p>
@@ -31,6 +43,12 @@
 	</ul>
 </p>
 
+<p><b>Activities</b></p>
+<ul>
+	<% @activities.each do |act| %>
+	<li><%= act.activity_date %> | <%= act.distance %> miles</li>
+	<%end%>
+</ul>
 
 <%#= link_to 'Edit', edit_team_path(@team) %>
 <%#= link_to 'Back', teams_path %>

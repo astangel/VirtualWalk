@@ -35,10 +35,10 @@
     <%= f.label :logo %><br />
     <%= f.text_field :logo %>
   </div>
-  <div class="field">
-    <%= f.label :agency_id %><br />
-    <%= f.collection_select :agency_id, Agency.all.collect, :id, :name, :prompt => "Select an agency" %>
-  </div>
+  <!--div class="field">
+    <%#= f.label :agency_id %><br />
+    <%#= f.collection_select :agency_id, Agency.all.collect, :id, :name, :prompt => "Select an agency" %>
+  </div-->
   <div class="field">
     <%= f.label :sponsor_id %><br />
     <%= f.collection_select :sponsor_id, Sponsor.all.collect, :id, :name, :prompt => "Select a sponsor" %>

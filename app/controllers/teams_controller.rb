@@ -19,6 +19,8 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
+    @activities = Activity.where("user_id = ?",@team.users)
+    @act_totals = Activity.where("user_id = ?",@team.users).sum("distance")
     if !current_user
       flash[:error] = "Access Denied."
       redirect_to root_url

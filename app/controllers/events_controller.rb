@@ -17,6 +17,8 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
+    @activities = Activity.where(:event_id => params[:id])
+    @act_totals = Activity.where(:event_id => params[:id]).sum("distance")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,6 +48,7 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @overlap_start = Event.where("agency_id = ? AND (start_date < ? AND end_date > ?)", @event.agency_id, @event.start_date, @event.start_date)
     @overlap_end = Event.where("agency_id = ? AND (start_date < ? AND end_date > ?)", @event.agency_id, @event.end_date, @event.end_date)
+    @event.agency_id = 1
     if ((@overlap_start.count > 0) || (@overlap_end.count > 0))
       flash[:error] = "Only one " + @event.agency.name + " event may run at any time."
       redirect_to @event

@@ -14,7 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 $(document).ready(function(){
+  $('.small-img').load(function(){$(this).before($('<img/>').attr({'src':$(this).attr('src'),'class':'rollover-img','id':''+$(this).attr('src').replace(/[/:.]/g,'')+'_large'}).css({'display':'none','z-index':'10', 'position':'absolute', 'background-color':'#FFF', 'top':$(this).height()/2, 'left':-$(this).width()/8}).load(function(){$(this).css({'top':"+="+(-1*(this.height/2))});}));$('.rollover-img').mouseout(function(){$(this).hide();});});
   $('.small-img').wrap('<div style="position:relative; overflow:visible;" />');
-  $('.small-img').mouseover(function(){$(this).before($('<img/>').attr({'src':$(this).attr('src'),'class':'rollover-img'}).css({'z-index':'10', 'position':'absolute', 'background-color':'#FFF', 'top':$(this).height()/2, 'left':-$(this).width()/8}).load(function(){$(this).css({'top':"+="+(-1*(this.height/2))});}));$('.rollover-img').mouseout(function(){$(this).hide();});});
+  $('.small-img').mouseover(function(){$i=$('#'+$(this).attr('src').replace(/[/:.]/g,'')+'_large').show();
+  
+  /*alert($i.width());*/
+  $i.css({'top':-$i.height()/2, 'left':-$i.width()/8});
+  });
   $('.registerCheck').click(function(){window.location = $(this).attr('regLink');});
 });
