@@ -27,8 +27,12 @@
   
   .menu-pill {margin:0 auto;}
   .menu-home {float: left; padding-top:.4em; margin-left:2em;}
+  body {background: url("background.jpg") 0 0 repeat-x;}
   #pageHolder {width:800px; margin:0 auto; border:1px solid #999; box-shadow: 0 0 18px #999;}
-  #masthead {width:100%; height:7em; background-color:#BBB; padding:1.5em 5em; color:#FFF; text-align:left;}
+  #masthead {width:100%; min-height:7em; background-color:#BBB; padding:0; color:#FFF; text-align:left; opacity:0.9; filter:alpha(opacity=90); /* For IE8 and earlier */}
+  #org_logo {float:left; position:relative; width:114px; height:134px; border:0; margin:8px 20px 8px 20px;}
+  #org_logo>a, #org_logo>a>img {border:0;}
+  #masthead h1 {vertical-align: middle; font-family: Papyrus, fantasy; font-size:60px; line-height:140px; text-shadow:.08em .08em 2px #999; margin:0; padding:0;}
   #menu {width:100%; height:2em; background-color:#DEF;border-top:1px solid #ABC; border-bottom:1px solid #ABC; padding:0;}
   #menu li {display:inline-block;position:relative; list-style:none; margin:0px .25em; border-left:1px solid #ABC; border-right:1px solid #ABC; height:2em; line-height:2em; padding:0 .5em;}
   #menu li:hover {background-color:#9AB; color:#FFF;}
@@ -36,8 +40,13 @@
   #menu li a:hover, #menu li:hover a {background-color:inherit; color:#FFF;}
   #menu #login, #menu #register, #menu #logout {float:right;}
   
-  #contents {width:auto; height:auto; min-height:30em; background-color:#FFF; padding:1.5em;}
-  #footer {width:100%; height:3.5em; background-color:#BBB; padding:1.5em 5em;}
+  #contents {width:auto; height:auto; min-height:30em; background-color:#FFF; padding:1.5em 1.5em 150px 1.5em;}
+  /*#footer {width:100%; height:3.5em; background-color:#BBB; padding:1.5em 5em;}*/
+  #footer {position: fixed; bottom: 0; clear: both; width: 100%; z-index: 100; height: 104px;}
+  #footer #bg {background: url("grass.png") 0 0 repeat-x; width: 100%; min-width: 100%; height: 104px; position: absolute; top: 0; left: 0;}
+  #footer_content {width:1100px; margin:0 auto; position:relative; overflow:visible; bottom:0; height:104px; text-align:center;}
+  #footer_content>div {bottom:3px; position:absolute; height:1.2em; width:100%; vertical-align:baseline; z-index:100; color:#CCC;}
+    
   .tdID {border-right:1px solid #BBB;  max-width:3em;}
   td.tdID {padding-right:1em; text-align:right;}
   .tdLabel {padding-left:1em;}
