@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+=begin
+User.create(username:'Ahmad',email:'jane@manager.com',password:'jane',password_confirmation:'jane')
+Role.create(name:"Manager")
+Role.create(name:"Renter")
+
+user1 = User.find(1)
+user1.roles << Role.where("name='Manager'")
+=end

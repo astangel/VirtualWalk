@@ -6,6 +6,7 @@
   <tr>
   	<th style="width:.5em"></th>
     <th>Username</th>
+    <th>Role</th>
     <th>First name</th>
     <th>Last name</th>
     <th>Email</th>
@@ -17,6 +18,13 @@
   <tr class="no-padding">
   	<td style="text-align:right;"><%= (user==current_user)?"*":""%></td>
     <td><%= user.username %></td>
+    <td>
+      <ul style="margin:0px .8em;">
+        <% user.roles.each do |role| %>
+        <li><%= role.name %></li>    		
+        <% end %>
+      </ul>
+    </td>
     <td><%= user.first_name %></td>
     <td><%= user.last_name %></td>
     <td><%= mail_to user.email %></td>
@@ -29,7 +37,7 @@
       </div>
     </td>
   </tr>
-  <tr><td class="object-list-subitem" colspan="6"><p>token: <%= user.single_access_token%></p></td></tr>
+  <tr><td class="object-list-subitem" colspan="7"><p>token: <%= user.single_access_token%></p></td></tr>
 <% end %>
 </table>
 
