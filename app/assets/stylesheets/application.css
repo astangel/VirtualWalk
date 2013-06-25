@@ -24,6 +24,8 @@
   .notice {font-weight:bold; color:#008000;}
   
   .subitem {color:#999; font-style:italic;}
+  .paragraph-title {display: block; font-size: 1.17em; margin:1em 0 0 0; -webkit-margin-start: 0px; -webkit-margin-end: 0px; font-weight: bold; text-decoration:underline;}
+  .first-paragraph {margin-top:.5em;}
   
   .menu-pill {margin:0 auto;}
   .menu-home {float: left; padding-top:.4em; margin-left:2em;}
