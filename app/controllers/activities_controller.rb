@@ -2,15 +2,20 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
     if !current_user
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @activities }
-    end end
+      if (can? :manage, :all)
+        @activities = Activity.all
+      else
+        @activities = Activity.where(:user_id => current_user.id)
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @activities }
+        end
+      end
+    end
   end
 
   # GET /activities/1

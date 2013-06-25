@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    if !current_user
+    if (!(can? :manage, :all))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
-    if !current_user
+    if ((!(can? :manage, :all)) && (current_user.id!=@user.id))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else

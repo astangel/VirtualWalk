@@ -1,5 +1,5 @@
 <%= link_to(new_activity_path, :title => 'Create a New Agency') do %><div class="newBtn"><i class="icon-new"></i>Add Activity</div><% end %>
-<h1>Listing activities</h1>
+<h1><%=((can? :manage, :all)?"All":"Your") %> Event Activities</h1>
 
 <table class="object-list">
   <tr>

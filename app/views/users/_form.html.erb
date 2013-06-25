@@ -35,6 +35,8 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  
+  <% if (can? :manage, :all) %>
   <div class="field">
     <%= f.label :roles %><br />
     <% for role in Role.find(:all) %>
@@ -44,6 +46,7 @@
       </div>
     <% end %>	
   </div>
+  <% end %>
   
   <% if !@user.events.nil? %>
   <div class="field">

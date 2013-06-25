@@ -1,5 +1,7 @@
 <!--a href="#"><div class="newBtn"><i class="icon-new"></i>Add User</div></a-->
+<% if (can? :manage, :all) %>
 <%= link_to(new_user_path, :title => 'Create a new user') do %><div class="newBtn"><i class="icon-new"></i>Add User</div><% end %>
+<% end %>
 <h1>Listing users</h1>
 
 <table class="object-list">
@@ -32,8 +34,10 @@
     <td>
       <div class="iconHolder">
       	<%= link_to(user, :title => 'View User') do %><i class="icon-show"></i><% end %>
+      	<% if (can? :manage, :all) %>
         <%= link_to(edit_user_path(user), :title => 'Update User') do %><i class="icon-update"></i><% end %>
         <%= link_to(user, confirm: 'Are you sure?', method: :delete, :title => 'Delete User') do %><i class="icon-delete"></i><% end %>
+        <% end %>
       </div>
     </td>
   </tr>

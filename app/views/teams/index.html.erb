@@ -1,5 +1,5 @@
 <%= link_to(new_team_path, :title => 'Create a New Team') do %><div class="newBtn"><i class="icon-new"></i>Add Team</div><% end %>
-<h1>Teams</h1>
+<h1><%=((can? :manage, :all)?"All":"Your") %> Teams</h1>
 
 <table class="object-list">
   <tr>
@@ -19,8 +19,10 @@
     <td>
       <div class="iconHolder">
       	<%= link_to(team, :title => 'View Team') do %><i class="icon-show"></i><% end %>
+      	<% if (can? :manage, :all) %>
         <%= link_to(edit_team_path(team), :title => 'Update Team') do %><i class="icon-update"></i><% end %>
         <%= link_to(team, confirm: 'Are you sure?', method: :delete, :title => 'Delete Team') do %><i class="icon-delete"></i><% end %>
+        <% end %>
       </div>
     </td>
   </tr>

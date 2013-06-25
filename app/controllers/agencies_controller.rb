@@ -3,7 +3,7 @@ class AgenciesController < ApplicationController
   # GET /agencies.json
   def index
     @agencies = Agency.all
-    if !current_user
+    if (!(can? :manage, :all))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -18,7 +18,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/1.json
   def show
     @agency = Agency.find(params[:id])
-    if !current_user
+    if (!(can? :manage, :all))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -33,7 +33,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/new.json
   def new
     @agency = Agency.new
-    if !current_user
+    if (!(can? :manage, :all))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -46,7 +46,12 @@ class AgenciesController < ApplicationController
 
   # GET /agencies/1/edit
   def edit
+    if (!(can? :manage, :all))
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
     @agency = Agency.find(params[:id])
+    end
   end
 
   # POST /agencies

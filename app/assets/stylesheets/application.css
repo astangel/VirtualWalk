@@ -14,7 +14,7 @@
   body, document, html {margin:0; padding:0;}
   div {display:block; position:relative; margin:0; padding:0; overflow:hidden;}
   td,p,img {vertical-align:top;}
-  a:hover {background-color:inherit !important;}
+  a:hover {background-color:inherit !important; color:#7BF !important;}
   
   .right {float:right !important; margin-left:1em;}
   .left {float:left !important; margin-right:1em;}
@@ -92,6 +92,7 @@
   .icon-delete {background-position: -456px 0;}
   .icon-list {background-position: -360px -48px; /*background-position: -264px  0*/}
   .icon-home {background-position: 0 -24px;}
+  .icon-user {background-position: -168px 0;}
   .icon-new {background-position: -408px -96px; background-image: url("glyphicons-halflings-white.png");}
   .icon-checked {background-position: -288px 0;}
   .icon-checked:hover {background-image:url("glyphicons-halflings.png");}
@@ -146,3 +147,5 @@ background: -ms-linear-gradient(top,  #007700 0%,#009900 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #007700 0%,#009900 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007700', endColorstr='#009900',GradientType=0 ); /* IE6-8 */
 }
+
+  	.meter-desc {margin-top:0px;}

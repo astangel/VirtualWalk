@@ -39,7 +39,12 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    if !(can? :manage, :all)
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
+      @event = Event.find(params[:id])
+    end
   end
 
   # POST /events

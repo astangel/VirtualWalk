@@ -1,5 +1,5 @@
 <%= link_to(new_registration_path, :title => 'Create a New Registration') do %><div class="newBtn"><i class="icon-new"></i>Add Registration</div><% end %>
-<h1>Registrations</h1>
+<h1><%=((can? :manage, :all)?"All":"Your") %> Event Registrations</h1>
 
 <table>
   <tr>

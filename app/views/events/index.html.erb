@@ -36,7 +36,7 @@
     <td>
       <div class="iconHolder">
       	<%= link_to(event, :title => 'View Event') do %><i class="icon-show"></i><% end %>
-      	<% if current_user %>
+      	<% if (can? :manage, :all) %>
         <%= link_to(edit_event_path(event), :title => 'Update Event') do %><i class="icon-update"></i><% end %>
         <%= link_to(event, confirm: 'Are you sure?', method: :delete, :title => 'Delete Event') do %><i class="icon-delete"></i><% end %>
         <% end %>

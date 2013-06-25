@@ -1,5 +1,7 @@
+<% if (can? :manage, :all) %>
 <%= link_to(new_sponsor_path, :title => 'Create a New Sponsor') do %><div class="newBtn"><i class="icon-new"></i>Add Sponsor</div><% end %>
-<h1>Sponsors</h1>
+<% end %>
+<h1>Event Sponsors</h1>
 
 <table class="object-list">
   <tr>
@@ -15,8 +17,10 @@
     <td>
       <div class="iconHolder">
       	<%= link_to(sponsor, :title => 'View Sponsor') do %><i class="icon-show"></i><% end %>
+      	<% if (can? :manage, :all) %>
         <%= link_to(edit_sponsor_path(sponsor), :title => 'Update Sponsor') do %><i class="icon-update"></i><% end %>
         <%= link_to(sponsor, confirm: 'Are you sure?', method: :delete, :title => 'Delete Sponsor') do %><i class="icon-delete"></i><% end %>
+        <% end %>
       </div>
     </td>
   </tr>

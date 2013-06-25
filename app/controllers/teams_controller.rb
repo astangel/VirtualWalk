@@ -2,16 +2,20 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
     if !current_user
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @teams }
-    end
+      if (can? :manage, :all)
+        @teams = Team.all
+      else
+        @teams = Team.find_by_sql("Select Teams.* from Teams JOIN Registrations on (Teams.id = Registrations.team_id) where Registrations.user_id=5;")
+        #.where(:users => current_user)
+      end
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @teams }
+      end
     end
   end
 
