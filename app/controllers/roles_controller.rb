@@ -3,7 +3,7 @@ class RolesController < ApplicationController
   # GET /roles.json
   def index
     @roles = Role.all
-    if !current_user
+    unless (can? :manage, :all)
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -18,7 +18,7 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     @role = Role.find(params[:id])
-    if !current_user
+    unless (can? :manage, :all)
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -33,7 +33,7 @@ class RolesController < ApplicationController
   # GET /roles/new.json
   def new
     @role = Role.new
-    if !current_user
+    unless (can? :manage, :all)
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -46,7 +46,12 @@ class RolesController < ApplicationController
 
   # GET /roles/1/edit
   def edit
-    @role = Role.find(params[:id])
+    unless (can? :manage, :all)
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    else
+      @role = Role.find(params[:id])
+    end
   end
 
   # POST /roles

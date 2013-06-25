@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
       if (can? :manage, :all)
         @teams = Team.all
       else
-        @teams = Team.find_by_sql("Select Teams.* from Teams JOIN Registrations on (Teams.id = Registrations.team_id) where Registrations.user_id=5;")
+        @teams = Team.find_by_sql("Select Teams.* from Teams JOIN Registrations on (Teams.id = Registrations.team_id) where Registrations.user_id="+current_user.id.to_s+";")
         #.where(:users => current_user)
       end
       respond_to do |format|
@@ -25,15 +25,16 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @activities = Activity.where("user_id = ?",@team.users)
     @act_totals = Activity.where("user_id = ?",@team.users).sum("distance")
+    @team_member = @team.users.include?(current_user)
+    
     if !current_user
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @team }
-    end
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @team }
+      end
     end
   end
 
@@ -56,6 +57,11 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
+    @team_member = @team.users.include?(current_user)
+    unless ((can? :manage, :all) || @team_member)
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    end
   end
 
   # POST /teams

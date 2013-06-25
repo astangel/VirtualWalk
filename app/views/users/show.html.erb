@@ -1,5 +1,5 @@
 <!--p id="notice"><%= notice %></p-->
-<div class="right subitem">Token: <%=@user.single_access_token%></div>
+<div class="right subitem">User Token: <%=@user.single_access_token%></div>
 <div class="page-title-holder">
   <div class="page-title"><h1><%= @user.fullname %></h1></div>
   <div style="float:left;">
@@ -30,10 +30,12 @@
 </p>
 
 <p>
-  <b>Team:</b>
+  <b>Teams:</b>
+  <ul class="no-margin">
   <% @user.teams.each do |c| %>
     <li><%= link_to c.team_name, c %></li>
   <%end %>
+  </ul>
 </p>
 
 <p>

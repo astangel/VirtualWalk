@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    if !current_user
+    unless current_user
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
@@ -22,7 +22,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1.json
   def show
     @activity = Activity.find(params[:id])
-    if !current_user
+    unless ((current_user==@activity.user) || (can? :manage, :all))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else

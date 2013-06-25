@@ -33,20 +33,24 @@ class SponsorsController < ApplicationController
   # GET /sponsors/new.json
   def new
     @sponsor = Sponsor.new
-    if !current_user
+    unless (can? :manage, :all)
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @sponsor }
-    end
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @sponsor }
+      end
     end
   end
 
   # GET /sponsors/1/edit
   def edit
     @sponsor = Sponsor.find(params[:id])
+    unless (can? :manage, :all)
+      flash[:error] = "Access Denied."
+      redirect_to root_url
+    end
   end
 
   # POST /sponsors

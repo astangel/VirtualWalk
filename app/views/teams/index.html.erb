@@ -17,7 +17,7 @@
     <td><%= number_to_currency(team.team_goal) %></td>
     <td><%= truncate(team.team_details, :length => 40, :separator => ' ', :omission => '... (continued)') %></td>
     <td>
-      <div class="iconHolder">
+      <div class="iconHolder left">
       	<%= link_to(team, :title => 'View Team') do %><i class="icon-show"></i><% end %>
       	<% if (can? :manage, :all) %>
         <%= link_to(edit_team_path(team), :title => 'Update Team') do %><i class="icon-update"></i><% end %>

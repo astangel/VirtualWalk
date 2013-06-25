@@ -1,4 +1,4 @@
-<% if current_user%>
+<% if (can? :manage, :all)%>
 <%= link_to(new_event_path, :title => 'Create a New Event') do %><div class="newBtn"><i class="icon-new"></i>Add Event</div><% end %>
 <% end %>
 <h1>Events</h1>
@@ -18,7 +18,7 @@
     <td colspan="7" class="eventTitle">
     	<div style="float:left;"><h3><%= event.event_name %></h3></div>
     	<div style="float:left; overflow:visible;">
-    		<% if !(event.logo.nil?)%>
+    		<% if (!(event.logo.nil?) && (event.logo!=''))%>
   		      <center><%= image_tag(event.logo, :class => 'small-img') %></center>
   		    <% end %>
     	</div>
@@ -27,14 +27,27 @@
     </td>
   </tr>
   <tr>
-  	<% if can? :manage, :all %><td width="15" style="padding:0;"><div class="registerCheck icon-<%= (@registrations.include?(event)?'checked':'none') %>" regLink="<%= (@registrations.include?(event)?'#':new_registration_path)  %>" /></td><% end %>
+  	<%
+  	  @reg_icon = ""
+  	  if (event.end_date < Date.current().to_time())
+  	  	@reg_icon = "icon-lock"
+  	  else
+  	  	@reg_icon = (@registrations.include?(event)?'icon-checked':'icon-none')
+  	  end
+  	%>
+  	<% if (current_user) %><td width="15" style="padding:0;">
+  		
+  		<div class="registerCheck <%= @reg_icon %>" regLink="<%= (@registrations.include?(event)?'#':""+new_registration_path+"?id="+event.id.to_s)  %>" />
+  	    
+  			
+  	</td><% end %>
     <td><%= event.date_range %></td>
     <td><%= number_to_currency(event.goal) %></td>
     <td><%= truncate(event.details, :length => 40, :separator => ' ', :omission => '... (continued)') %></td>
     <td><%= event.sponsor.name %></td>
     
     <td>
-      <div class="iconHolder">
+      <div class="iconHolder left">
       	<%= link_to(event, :title => 'View Event') do %><i class="icon-show"></i><% end %>
       	<% if (can? :manage, :all) %>
         <%= link_to(edit_event_path(event), :title => 'Update Event') do %><i class="icon-update"></i><% end %>

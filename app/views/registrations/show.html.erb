@@ -1,6 +1,6 @@
 <!--p id="notice"><%= notice %></p-->
 <div class="page-title-holder">
-  <div class="page-title"><h1>Registration</h1></div>
+  <div class="page-title"><h1><%= @registration.event.event_name %> Registration</h1></div>
   <div style="float:left;">
   	<div class="iconHolder">
   		<% if current_user %><%= link_to(edit_registration_path(@registration), :title => 'Update Registrations') do %><i class="icon-update"></i><% end %><% end %>
@@ -39,7 +39,7 @@
 <p><b>Activities</b></p>
 <ul>
 	<% @activities.each do |act| %>
-	<li><%= act.activity_date %> | <%= act.distance %> miles</li>
+	<li><%= act.distance %> miles <small>(<%= act.activity_date.strftime("%m/%d/%Y -  %I:%M  %p") %>)</small></li>
 	<%end%>
 </ul>
 

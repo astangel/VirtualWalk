@@ -8,9 +8,11 @@
 </head>
 <body>
 	<div id="pageHolder">
-		<div id="masthead">
-			<div id="org_logo"><a href="#" title="Jameson Camp Homepage"><img src="/assets/jamesonlogo.png" alt="Jameson Camp Logo"/></a></div>
-			<h1>Virtual Walk</h1></div>
+		<div id="masthead" style="background-color:inherit;">
+			<div id="org_logo" style="z-index:12;"><a href="#" title="Jameson Camp Homepage"><img src="/assets/jamesonlogo.png" alt="Jameson Camp Logo"/></a></div>
+			<div style="z-index: 12;"><h1>Virtual Walk</h1></div>
+			<div style="z-index:1; height:150px; width: 100%; min-height: 7em; background-color: #BBB; padding: 0; color: #FFF; position: absolute; left:0; top:0; text-align: left; opacity: 0.7; filter: alpha(opacity=90);"></div>
+	    </div>
 		<div id="menu">
 			<div class="menu-home"><%= link_to("/", :title => 'Home') do %><i class="icon-home"></i><% end %></div>
 			<li><%= link_to 'Events', events_path %></li>
@@ -22,7 +24,7 @@
             <% if (can? :manage, :all) %>
 			<li><%= link_to 'Users', users_path %></li>
 			<% end %>	
-    	    <li id="login"><%= link_to(edit_user_path(current_user), :title => current_user.fullname) do %><i class="icon-user"></i><%= current_user.fullname %><% end %></li>
+    	    <li id="login"><%= link_to(user_path(current_user), :title => current_user.fullname) do %><i class="icon-user"></i><%= current_user.fullname %><% end %></li>
     	    <li id="logout"><%= link_to "Logout", logout_path %></li>
     	  <% else %>
     	    <li id="register"><%= link_to "Register", new_user_path %></li>

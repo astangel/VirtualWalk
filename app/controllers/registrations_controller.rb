@@ -7,12 +7,11 @@ class RegistrationsController < ApplicationController
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-    
-    @userRegistrations = Registration.where(:user_id => current_user)  
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @registrations }
-    end
+      @userRegistrations = Registration.where(:user_id => current_user)  
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @registrations }
+      end
     end
   end
 
@@ -21,15 +20,15 @@ class RegistrationsController < ApplicationController
   def show
     @registration = Registration.find(params[:id])
     @activities = Activity.where(:user_id => @registration.user_id)
-    @act_totals = Activity.where(:user_id => @registration.user_id).sum("distance")
-    if !current_user
+    @act_totals = @activities.sum("distance")
+    unless ((current_user==@registration.user) || (can? :manage, :all))
       flash[:error] = "Access Denied."
       redirect_to root_url
     else
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @registration }
-    end
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @registration }
+      end
     end
   end
 

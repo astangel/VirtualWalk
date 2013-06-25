@@ -95,7 +95,9 @@
   .icon-user {background-position: -168px 0;}
   .icon-new {background-position: -408px -96px; background-image: url("glyphicons-halflings-white.png");}
   .icon-checked {background-position: -288px 0;}
-  .icon-checked:hover {background-image:url("glyphicons-halflings.png");}
+  .icon-lock {background-position: -288px -24px;}
+  .icon-time {background-position: -48px -24px;}
+  .icon-checked:hover, .icon-lock:hover {background-image:url("glyphicons-halflings.png");}
   .icon-none:hover {background-position: -288px 0; background-image: url("glyphicons-halflings-white.png") !important;}
 
 

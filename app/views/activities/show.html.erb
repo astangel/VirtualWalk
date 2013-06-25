@@ -1,5 +1,5 @@
 <div class="page-title-holder">
-  <div class="page-title"><h1>Activity #<%= @activity.id %></h1></div>
+  <div class="page-title"><h1><%=((can? :manage, :all)?@activity.user.fullname+"'s":"Your") %> Activity</h1></div>
   <div style="float:left;">
   	<div class="iconHolder">
   		<% if current_user %><%= link_to(edit_activity_path(@activity), :title => 'Update Activities') do %><i class="icon-update"></i><% end %><%end %>
@@ -15,7 +15,7 @@
 
 <p>
   <b>Activity date:</b>
-  <%= @activity.activity_date %>
+  <%= @activity.activity_date.strftime("%m/%d/%Y -  %I:%M  %p") %>
 </p>
 
 <p>

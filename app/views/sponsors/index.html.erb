@@ -15,7 +15,7 @@
     <td><center><%= image_tag(sponsor.logo, :class => 'small-img') %></center></td>
     <td><%= sponsor.name %></td>
     <td>
-      <div class="iconHolder">
+      <div class="iconHolder left">
       	<%= link_to(sponsor, :title => 'View Sponsor') do %><i class="icon-show"></i><% end %>
       	<% if (can? :manage, :all) %>
         <%= link_to(edit_sponsor_path(sponsor), :title => 'Update Sponsor') do %><i class="icon-update"></i><% end %>

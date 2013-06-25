@@ -3,7 +3,7 @@
   <div class="page-title"><h1><%= @team.team_name %></h1></div>
   <div style="float:left;">
   	<div class="iconHolder">
-  		<% if current_user %><%= link_to(edit_team_path(@team), :title => 'Update Team') do %><i class="icon-update"></i><% end %><%end%>
+  		<% if @team_member %><%= link_to(edit_team_path(@team), :title => 'Update Team') do %><i class="icon-update"></i><% end %><%end%>
   		<%= link_to(teams_path, :title => 'All Teams') do %><i class="icon-list"></i><% end %>
   	</div>
   </div>
@@ -46,7 +46,7 @@
 <p><b>Activities</b></p>
 <ul>
 	<% @activities.each do |act| %>
-	<li><%= act.activity_date %> | <%= act.distance %> miles</li>
+	<li><%= act.user.fullname %> => <%= act.distance %> miles <small>(<%= act.activity_date.strftime("%m/%d/%Y -  %I:%M  %p") %>)</small></li>
 	<%end%>
 </ul>
 

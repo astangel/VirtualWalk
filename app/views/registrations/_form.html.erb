@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :event %><br />
-    <%= f.collection_select :event_id, Event.all(:conditions => ['end_date > ?', Time.now.beginning_of_day]).collect, :id, :event_name, :prompt => "Select an event" %>
+    <%= f.collection_select :event_id, Event.all(:conditions => ['end_date > ?', Time.now.beginning_of_day]).collect, :id, :event_name, :prompt => "Select an event", :selected => params[:id] %>
   </div>
   <div class="field">
   <% if !@registration.event.nil? %>
@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :personal_goal %><br />
-    <%= f.text_field :personal_goal, :class=>'money-field' %>
+    <%= f.text_field :personal_goal %> miles
   </div>
   <div class="actions">
     <%= f.submit %>
