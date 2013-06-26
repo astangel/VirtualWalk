@@ -7,8 +7,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    #if (!(can? :manage, :all))
-    unless (current_user)
+    unless (can? :manage, :all)
       flash[:error] = "Access Denied."
       redirect_to root_url
     else

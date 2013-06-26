@@ -72,7 +72,7 @@
   .eventTitle h3 {margin: 0px 1em 0px 0px;}
 
   
-  .iconHolder {background-color:#CCC; border-radius:.75em; padding:.05em .75em;}
+  .iconHolder {background-color:#CCC; border-radius:.75em; padding:.05em .75em; margin:0;}
   
   [class^="icon-"], [class*=" icon-"] {
     margin-left:2px;
