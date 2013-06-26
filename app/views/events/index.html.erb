@@ -2,9 +2,44 @@
 <%= link_to(new_event_path, :title => 'Create a New Event') do %><div class="newBtn"><i class="icon-new"></i>Add Event</div><% end %>
 <% end %>
 <h1>Events</h1>
+<% unless (can? :manage, :all)%>
+<% @events.each do |event| %>
+  	<%
+  	  @reg_status = ""
+  	  if(@registrations)
+	  	  if (event.end_date < Date.current().to_time())
+	  	  	@reg_status = "Expired"
+	  	  else
+	  	  	@reg_status = (@registrations.include?(event)?'Registered':'Available')
+	  	  end
+	  end
+  	%>
+<div class="eventDiv">
+	<div class="eventHeader">
+		<div class="eventTitle"><h3><%= link_to event.event_name, event, :class=>"bareLink" %></h3><small class="eventDate">(<%= event.date_range %>)</small></div>
+		<% if current_user %>
+		<div class="eventRegHolder">
+			<% if ((@reg_status=="Expired") || (@reg_status=="Registered"))%>
+			  <p class="no-margin btn-mini reg<%= @reg_status%>"><%= @reg_status.titleize()%></p>
+			<% else %>
+			  <a class="btn btn-mini btn-info"  href="<%= new_registration_path+"?id="+event.id.to_s %>">Register</a>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+	<div class="eventContent">
+		<p class="no-margin right eventSponsor">Sponsored by <%= link_to event.sponsor.name, event.sponsor %></p>
+		<p class="no-margin eventGoal">Goal: <%= number_with_delimiter(event.goal, :delimiter => ',') %> miles</p>
+		<p class="eventDescription quarter-top"><%= truncate(event.details, :length => 300, :separator => ' ', :omission => '... (continued)') %></p>
+	</div>
+</div>
+<% end %>
+
+<% else %>
 
 <table class="object-list">
   <tr>
+  	<th></th>
     <th>Dates</th>
     <th>Goal</th>
     <th>Details</th>
@@ -15,7 +50,7 @@
 
 <% @events.each do |event| %>
   <tr>
-    <td colspan="7" class="eventTitle">
+    <td colspan="7" class="event-Title">
     	<div style="float:left;"><h3><%= event.event_name %></h3></div>
     	<div style="float:left; overflow:visible;">
     		<% if (!(event.logo.nil?) && (event.logo!=''))%>
@@ -59,5 +94,6 @@
   </tr>
 <% end %>
 </table>
+<% end %>
 
 <%#= link_to 'New Event', new_event_path %>

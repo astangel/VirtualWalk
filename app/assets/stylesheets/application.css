@@ -14,11 +14,15 @@
   body, document, html {margin:0; padding:0;}
   div {display:block; position:relative; margin:0; padding:0; overflow:hidden;}
   td,p,img {vertical-align:top;}
-  a:hover {background-color:inherit !important; color:#7BF !important;}
+  a.bareLink, a.bareLink:visited {color:inherit !important; text-decoration:inherit !important;}
+  a:hover, a.bareLink:hover {background-color:inherit !important; color:#7BF !important;}
+  a.bareHover:hover, a.bareHover:active {color:inherit !important; text-decoration:inherit !important;}
+  small{font-size: smaller;}
   
   .right {float:right !important; margin-left:1em;}
   .left {float:left !important; margin-right:1em;}
   .no-margin {margin:0px !important;}
+  .quarter-top {margin-top:.25em !important;}
   
   .error {font-weight:bold; color:#FF0000;}
   .notice {font-weight:bold; color:#008000;}
@@ -68,8 +72,20 @@
   .object-list tr td.object-list-subitem {padding:0 0 1em 1em;}
   .object-list tr td.object-list-subitem p{font-size:.85em; font-style:italic; margin:0; background-color:#EFE; padding-left:.15em;}
   #contents>h1:first-of-type	 {margin-top:.15em;}
-  .eventTitle {border-bottom:1px solid #999; vertical-align:top; padding-top:1em !important;}
-  .eventTitle h3 {margin: 0px 1em 0px 0px;}
+  .event-Title {border-bottom:1px solid #999; vertical-align:top; padding-top:1em !important;}
+  .event-Title h3 {margin: 0px 1em 0px 0px;}
+  .eventDiv {}
+  .eventHeader {border-bottom:1px solid #999; vertical-align:bottom; padding-top:1em !important; margin-bottom:.25em;}
+  .eventTitle {float:left;}
+  .eventTitle h3 {margin: 0px 1em 0px 0px; display:inline;}
+  .eventRegHolder {float:right;}
+  .eventRegHolder .regExpired {margin:0; color:#FFF; background-color:#999; font-size:.85em; font-weight:bold;}
+  .eventRegHolder .regRegistered {margin:0; color:#fff; background-color:#228822; font-size:.85em; font-weight:bold;}
+  .eventRegHolder .btn {margin-bottom:.25em;}
+  .eventContent {background-color:#eee; padding:0 .75em;}
+  .eventSponsor, .eventGoal {font-weight:700; color:#555;}
+  .eventSponsor {color:#777;}
+  .eventDescription {color:#000;}
 
   
   .iconHolder {background-color:#CCC; border-radius:.75em; padding:.05em .75em; margin:0;}
@@ -117,6 +133,11 @@
     background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
     background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
   }
+  .btn {display: inline-block; text-decoration:none !important;  padding: .25em 1em;  margin-bottom: 0;  font-size: 1em;  line-height: 1.75em;  color: #333333;  text-align: center;  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);  vertical-align: middle;  cursor: pointer;  background-color: #f5f5f5;  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);  background-repeat: repeat-x;  border: 1px solid #cccccc;  border-color: #e6e6e6 #e6e6e6 #bfbfbf;  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);  border-bottom-color: #b3b3b3;  -webkit-border-radius: 4px;  -moz-border-radius: 4px;  border-radius: 4px;  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);}
+  .btn-mini {padding: 0 .5em; font-size: 10.5px; -webkit-border-radius: .25em; -moz-border-radius: .25em; border-radius: .25em;}
+  .btn-info {color: #ffffff !important; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); background-color: #49afcd; background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4)); background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4); background-image: -o-linear-gradient(top, #5bc0de, #2f96b4); background-image: linear-gradient(to bottom, #5bc0de, #2f96b4); background-repeat: repeat-x; border-color: #2f96b4 #2f96b4 #1f6377; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0); filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  .btn:hover, .btn:focus {color: #333333; text-decoration: none !important; background-position: 0 -1.25em; -webkit-transition: background-position 0.1s linear; -moz-transition: background-position 0.1s linear; -o-transition: background-position 0.1s linear; transition: background-position 0.1s linear;}
+  .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {color: #ffffff !important; background-color: #2f96b4 !important;}
   .newBtn {float:right; border-radius:.5em; background-color:#282; padding:.25em .5em; vertical-align:middle; line-height:1.25em; height:1.25em; font-weight:bold; text-decoration:none; color:#FFF;}
   .newBtn .icon-new {margin-right:.5em;}
   
