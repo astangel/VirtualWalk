@@ -19,19 +19,22 @@
     <%= f.label :activity_date %><br />
     <%= f.datetime_select :activity_date %>
   </div>
+  <% if (can? :manage, :all) %>
   <div class="field">
     <%= f.label :user_id %><br />
     <%= f.collection_select :user_id, User.all.collect, :id, :fullname, :prompt => "Select a user" %>
     <%#= !(@activity.user.nil?) ? @activity.user.fullname : raw("<em>User not set</em>")%>
     <%#= f.hidden_field :user, :value => :user %>
-    
   </div>
+  <% end %>
   <div class="field">
     <%= f.label :event_id %><br />
     <%#= f.collection_select :event_id, Event.all.collect, :id, :event_name, :prompt => "Select an event" %>
     <% if !(current_user.nil?) %>
         <% if (current_user.events.count>0) %>
           <%= f.select :event_id, Event.find_all_by_id(current_user.event_ids).collect {|x| [x.event_name, x.id]}, {:prompt => "Select an event"}, {:id => "sltEvents"} %>
+        <%elsif (can? :manage, :all) %>
+          <%= f.collection_select :event_id, Event.all.collect, :id, :event_name, :prompt => "Select an event" %>
         <%else%>
           <%= raw("<em>Only Available after you register for an event</em>") %>
         <%end%>

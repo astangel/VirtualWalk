@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :logo, :details, :goal, :end_date, :start_date, :event_name, :teams, :activities, :users, :agency, :sponsor, :agency_id, :sponsor_id
+  attr_accessible :logo, :details, :goal, :end_date, :start_date, :event_name, :teams, :team_ids, :activities, :users, :agency, :sponsor, :agency_id, :sponsor_id
   validates :details, :presence => true
   validates :end_date, :presence => true
   validates :start_date, :presence => true

@@ -15,7 +15,7 @@
   <tr>
     <td><%= registration.user.fullname %></td>
     <td><%= registration.event.event_name %></td>
-    <td><%= number_to_currency(registration.personal_goal) %></td>
+    <td><%= registration.personal_goal %> miles</td>
     <td>
       <div class="iconHolder">
       	<%= link_to(registration, :title => 'View Registration') do %><i class="icon-show"></i><% end %>

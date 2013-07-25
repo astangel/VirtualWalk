@@ -59,7 +59,9 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(params[:activity])
     @activity.manual = true
-    @activity.user = current_user
+    unless (can? :manage, :all)
+      @activity.user = current_user
+    end
 
     respond_to do |format|
       if @activity.save

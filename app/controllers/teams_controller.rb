@@ -23,8 +23,8 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
-    @activities = Activity.where("user_id = ?",@team.users)
-    @act_totals = Activity.where("user_id = ?",@team.users).sum("distance")
+    @activities = Activity.where("user_id IN (?) AND event_id IN (?)",@team.users,@team.event)
+    @act_totals = Activity.where("user_id IN (?) AND event_id IN (?)",@team.users,@team.event).sum("distance")
     @team_member = @team.users.include?(current_user)
     
     if !current_user

@@ -19,7 +19,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1.json
   def show
     @registration = Registration.find(params[:id])
-    @activities = Activity.where(:user_id => @registration.user_id)
+    @activities = Activity.where(:user_id => @registration.user_id, :event_id => @registration.event_id)
     @act_totals = @activities.sum("distance")
     unless ((current_user==@registration.user) || (can? :manage, :all))
       flash[:error] = "Access Denied."
