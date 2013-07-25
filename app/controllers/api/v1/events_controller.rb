@@ -51,7 +51,7 @@ module Api
         else
           if (Event.where('id in (?)', selectedEvent).count>0)
             #respond_with '[{"distance:"'+Activity.where(:event_id => params[:id]).sum("distance", :group => :teams).to_s+'"}]'
-            respond_with Team.find_by_sql("SELECT teams.id AS TEAM, registrations.user_id, activities.id, activities.distance FROM teams INNER JOIN registrations ON teams.id=registrations.team_id INNER JOIN activities ON registrations.user_id = activities.user_id WHERE teams.event_id=18 AND activities.event_id = 18 ORDER BY TEAM")
+            respond_with Team.find_by_sql("SELECT teams.id AS team_id, sum(activities.distance) AS progress, teams.team_goal FROM teams INNER JOIN registrations ON teams.id=registrations.team_id LEFT JOIN activities ON registrations.user_id = activities.user_id WHERE teams.event_id=18 AND activities.event_id = 18 GROUP BY teams.id")
           else
             respond_with nil
           end
