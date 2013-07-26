@@ -37,7 +37,7 @@ module Api
         else
           if (Event.where('id in (?)', selectedEvent).count>0)
             #respond_with '[{"distance:"'+Activity.where(:event_id => params[:id]).sum("distance").to_s+'"}]'
-            respond_with '[{"distance:"'+Event.find(selectedEvent).activities.sum("distance").to_s+'"}]'
+            respond_with '[{"event_progress":"'+Event.find(selectedEvent).activities.sum("distance").to_s+'","event_goal":"'+Event.find(selectedEvent).goal.to_s+'"}]'
           else
             respond_with nil
           end
@@ -58,9 +58,27 @@ module Api
         end
       end
       
+      def user_progress
+        selectedEvent = params[:id]
+        unless selectedEvent
+          respond with nil
+        else
+          if (Event.where('id in (?)', selectedEvent).count>0)
+            #respond_with '[{"distance:"'+Activity.where(:event_id => params[:id]).sum("distance", :group => :teams).to_s+'"}]'
+            str = '[{"user_progress":"'+@user.activities.where(event_id: selectedEvent).sum("distance").to_s+'","user_goal":"'+@user.registrations.where(event_id: selectedEvent)[0].personal_goal.to_s+'"}]'
+            #goal = @user.registrations.where(event_id: selectedEvent)[0].personal_goal
+            #prog = @user.activities.where(event_id: selectedEvent).sum("distance")
+            respond_with str
+          else
+            respond_with nil
+          end
+        end
+      end     
+      
+      private
       def restrict_access
-        api_key = User.find_by_single_access_token(params[:access_token])
-        head :unauthorized unless api_key
+        @user = User.find_by_single_access_token(params[:access_token])
+        head :unauthorized unless @user
       end
  
  

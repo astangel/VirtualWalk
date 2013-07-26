@@ -10,6 +10,7 @@ VirtualWalk::Application.routes.draw do
         match 'events/teams/:id', :to => 'events#teams'
         match 'events/teams/progress/:id', :to => 'events#teams_progress'
         match 'events/progress/:id', :to => 'events#progress'
+        match 'events/:id/user_progress', :to => 'events#user_progress'
 
         match 'activities/:access_token', :to=> 'activities#index'
         match 'activities/:access_token/:id', :to => 'activities#filteredindex'
