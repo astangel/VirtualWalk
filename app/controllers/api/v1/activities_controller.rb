@@ -4,6 +4,7 @@ module Api
       before_filter :restrict_access
       respond_to :json
       
+      
       def index
         respond_with @user.activities.all   
       end 
