@@ -20,7 +20,6 @@ VirtualWalk::Application.routes.draw do
         DECIMAL_PATTERN = /[0-9]+(?:\.[0-9]*)?/
         match 'activities/:access_token/:activity_date/:distance/:manual/:event_id', :to => 'activities#remote_insert_activity', :requirements => { :distance => DECIMAL_PATTERN }, :constraints => { :distance => /.*/ }
 
-
         resources :events
         resources :activities
     end
