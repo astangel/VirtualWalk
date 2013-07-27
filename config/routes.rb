@@ -1,5 +1,30 @@
 VirtualWalk::Application.routes.draw do
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do        
+        #API routes
 
+        match 'users/login', :to => 'users#login'
+        match 'users/validate_token/:token', :to => 'users#validate_token' 
+        #match 'users/destroy', :to => 'users#destroy' 
+        match 'events/show/:id', :to => 'events#show'
+        match 'events/teams/:id', :to => 'events#teams'
+        match 'events/teams/progress/:id', :to => 'events#teams_progress'
+        match 'events/progress/:id', :to => 'events#progress'
+        match 'events/:id/user_progress', :to => 'events#user_progress'
+
+        match 'activities/:access_token', :to=> 'activities#index'
+        match 'activities/:access_token/:id', :to => 'activities#filteredindex'
+        #match 'activities/:token/:id', :to => 'activities#filteredindex'
+        #match 'activities/test', :to=> 'activities#test'
+        #match 'activities/show/:id', :to => 'activities#show'
+        DECIMAL_PATTERN = /[0-9]+(?:\.[0-9]*)?/
+        match 'activities/:access_token/:activity_date/:distance/:manual/:event_id', :to => 'activities#remote_insert_activity', :requirements => { :distance => DECIMAL_PATTERN }, :constraints => { :distance => /.*/ }
+
+        resources :events
+        resources :activities
+    end
+  
+  end
 
   resources :users
   
