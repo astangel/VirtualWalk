@@ -107,7 +107,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  authlogic (< 3.3.0)
+  authlogic (= 3.2.0)
   cancan
   coffee-rails (~> 3.2.1)
   jquery-rails

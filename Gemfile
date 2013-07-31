@@ -37,6 +37,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'authlogic', '<3.3.0'
+gem 'authlogic', '3.2.0'
 #, :git => 'git://github.com/binarylogic/authlogic.git'
 gem 'cancan'

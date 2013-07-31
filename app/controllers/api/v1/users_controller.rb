@@ -23,7 +23,7 @@ module Api
           if user = User.find_by_username(username) 
             user.valid_password?(password)
           else
-            false
+            respond_with nil
           end # end if
         end # end authenticate_or_request_with_http_basic
       end # end def
