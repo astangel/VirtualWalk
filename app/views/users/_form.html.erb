@@ -48,7 +48,7 @@
   </div>
   <% end %>
   
-  <% if !@user.events.nil? %>
+  <% if @user.events.count > 0 %>
   <div class="field">
   	<%= f.label :events %>
   	<ul>
